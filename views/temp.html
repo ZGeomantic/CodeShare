@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title></title>
+<style type="text/css">
+/*
+
+*/
+body{
+	font-size:12px;
+	line-height:1.8;
+	font-family:'Courier New', Courier, monospace;
+}
+#area{
+	width:320px;
+	height:120px;
+}
+</style>
+</head>
+
+<body>
+
+<textarea id="area">
+body{
+	font-size:12px;
+	line-height:1.8;
+	font-family:'微软雅黑';
+}
+/*
+	web：http://www.dovapour.com.cn/
+    mail：dovapour@gmail.com
+  	QQ：362380046
+*/
+#area{
+	width:320px;
+	height:120px;
+	line-height:1.5;
+	font-family:"Courier New", Courier, monospace;
+}
+/*
+ul{
+	margin:0;
+    padding:0;
+    list-style:none;
+}
+table{
+	border-collapse:collapse;
+    border-spacing:0;
+}
+*/
+</textarea>
+<button id="btn">测试</button>
+<div id="pre" style="color:#F0F;"></div>
+<script type="text/javascript">
+function $(id) {
+	return document.getElementById(id);
+};
+$("btn").onclick=function(){
+	var code=$("area").value;
+	
+	
+	//处理注释：注释替换成 _数字_ 
+	var startIdx=endIndex=-1;
+	var at=0;
+	var commentList=[];
+	while(true){
+		startIndex=code.indexOf("/*",at);
+		if(startIndex==-1)break;
+		endIndex=code.indexOf("*/",startIndex);
+		if(endIndex==-1)break;
+		
+		at=endIndex+2;
+		commentList.push(code.substring(startIndex,at));
+		code=code.replace(commentList[commentList.length-1],"_"+(commentList.length-1)+"_");
+	}
+	
+	//字符串
+	code=code.replace(/(['"]).*\1/g,function(m){return "<span style=\"color:#060;\">"+m+"</span>"});
+	
+	//CSS样式值
+	code=code.replace(/:(.+);/g,function(m,n){return ":<span style=\"color:#00F;\">"+n+"</span>;"});
+	
+	//CSS样式名称
+	code=code.replace(/[{}]/g,function(m){
+		if(m=="{"){
+			return "{<span style=\"color:#006;\">";
+		}else{
+			return "</span>}";
+		}
+	});
+	
+	//注释
+	code=code.replace(/_(\d+)_/g,function(m,n){return "<span style=\"color:#999;\">"+commentList[n]+"</span>"});
+	
+	//处理\t
+	code=code.replace(/^(\t+)/gm,function(m){
+		return (new Array(m.length+1)).join("&nbsp;&nbsp;&nbsp;&nbsp;");									
+	});
+	
+	//处理空格
+	code=code.replace(/^( +)/gm, function(m) {
+		return (new Array(m.length + 1)).join("&nbsp;");
+	});
+	
+	//处理换行
+	code=code.replace(/\r?\n/g,"<br />");
+	
+	$("pre").innerHTML=code;
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<pre>
+{{range $k,$v:=.Code}}<div id="line{{$k}}"><a href="#line{{$k}}">{{$k}}</a>|<code data-language="C"> {{$v}}</code></div>{{end}}
+</pre>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Beego</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<style type="text/css">
+			body {
+				margin: 0px;
+				font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+				font-size: 14px;
+				line-height: 20px;
+				color: rgb(51, 51, 51);
+				background-color: rgb(255, 255, 255);
+			}
+
+			.hero-unit {
+				padding: 60px;
+				margin-bottom: 30px;
+				border-radius: 6px 6px 6px 6px;
+			}
+
+			.container {
+				width: 940px;
+				margin-right: auto;
+				margin-left: auto;
+			}
+
+			.row {
+				margin-left: -20px;
+			}
+
+			h1 {
+				margin: 10px 0px;
+				font-family: inherit;
+				font-weight: bold;
+				text-rendering: optimizelegibility;
+			}
+
+			.hero-unit h1 {
+				margin-bottom: 0px;
+				font-size: 60px;
+				line-height: 1;
+				letter-spacing: -1px;
+				color: inherit;
+			}
+
+			.description {
+				padding-top: 5px;
+				padding-left: 5px;
+				font-size: 18px;
+				font-weight: 200;
+				line-height: 30px;
+				color: inherit;
+			}
+
+			p {
+				margin: 0px 0px 10px;
+			}
+
+
+
+			.syntaxhighlighter{background-color:white !important;}
+.syntaxhighlighter .line.alt1{background-color:white !important;}
+.syntaxhighlighter .line.alt2{background-color:white !important;}
+.syntaxhighlighter .line.highlighted.alt1,.syntaxhighlighter .line.highlighted.alt2{background-color:#e0e0e0 !important;}
+.syntaxhighlighter .line.highlighted.number{color:black !important;}
+.syntaxhighlighter table caption{color:black !important;}
+.syntaxhighlighter table td.code .container textarea{background:white;color:black;}
+.syntaxhighlighter .gutter{color:#afafaf !important;}
+.syntaxhighlighter .gutter .line{border-right:3px solid #6ce26c !important;}
+.syntaxhighlighter .gutter .line.highlighted{background-color:#6ce26c !important;color:white !important;}
+.syntaxhighlighter.printing .line .content{border:none !important;}
+.syntaxhighlighter.collapsed{overflow:visible !important;}
+.syntaxhighlighter.collapsed .toolbar{color:blue !important;background:white !important;border:1px solid #6ce26c !important;}
+.syntaxhighlighter.collapsed .toolbar a{color:blue !important;}
+.syntaxhighlighter.collapsed .toolbar a:hover{color:red !important;}
+.syntaxhighlighter .toolbar{color:white !important;background:#6ce26c !important;border:none !important;}
+.syntaxhighlighter .toolbar a{color:white !important;}
+.syntaxhighlighter .toolbar a:hover{color:black !important;}
+.syntaxhighlighter .plain,.syntaxhighlighter .plain a{color:black !important;}
+.syntaxhighlighter .comments,.syntaxhighlighter .comments a{color:#008200 !important;}
+.syntaxhighlighter .string,.syntaxhighlighter .string a{color:blue !important;}
+.syntaxhighlighter .keyword{color:#006699 !important;}
+.syntaxhighlighter .preprocessor{color:grey !important;}
+.syntaxhighlighter .variable{color:#aa7700 !important;}
+.syntaxhighlighter .value{color:#009900 !important;}
+.syntaxhighlighter .functions{color:deeppink !important;}
+.syntaxhighlighter .constants{color:#0066cc !important;}
+.syntaxhighlighter .script{font-weight:bold !important;color:#006699 !important;background-color:none !important;}
+.syntaxhighlighter .color1,.syntaxhighlighter .color1 a{color:grey !important;}
+.syntaxhighlighter .color2,.syntaxhighlighter .color2 a{color:deeppink !important;}
+.syntaxhighlighter .color3,.syntaxhighlighter .color3 a{color:red !important;}
+.syntaxhighlighter .keyword{font-weight:bold !important;}
+
+		</style>
+</head>
+
+<body>
+	<header class="hero-unit" style="background-color:#A9F16C">
+		<div class="container">
+			<div class="row">
+				<div class="hero-text">
+					<h1>Share Code!</h1>
+					<br>
+					<hr/>
+					<p >
+						{{if .Error }}
+							{{.Error}}
+						<br/>
+						{{else}}
+							
+							{{range $k,$v:=.Code}}
+							<code class="code cpp string">
+			 	 			{{$k}} :   
+			 				{{$v | html}}
+			 				</code>
+						<br/>
+						{{end}}
+						<br/>
+						{{end}}
+						<!-- <br />
+						Contact me :
+						<a href="http://{{.Website}}">{{.Website}}</a>
+						-->
+						<br />
+						Contact me: {{.Email}}
+					</p>
+				</div>
+				<p></p>
+			</div>
+		</div>
+	</header>
+</body>
+</html>
