@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<title>Beego</title>
+	<title>Code Share</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<!-- <link href="/static/css/github.css" rel="stylesheet" type="text/css"> -->
 	<script src="/static/js/jquery-1.10.1.min.js"></script>
@@ -19,6 +19,24 @@
             white-space: pre;
             width: auto;
             word-spacing: 0px;}
+            .mycon{
+            	border-bottom-color: rgb(238, 238, 238);
+				border-bottom-style: solid;
+				border-bottom-width: 1px;
+				box-sizing: border-box;
+				color: rgb(51, 51, 51);
+				display: block;
+				font-family: Consolas, 'Liberation Mono', Courier, monospace;
+				font-style: normal;
+				font-variant: normal;
+				font-weight: normal;
+				line-height: 18.200000762939453px;
+				margin-bottom: 20px;
+				padding-bottom: 20px;
+				padding-top: 10px;
+				position: relative;
+				width: 1287px;
+            }
     </style>
      <link href="/static/css/prism.css" rel="stylesheet"/>
     <script src="/static/js/prism.js"></script>
@@ -28,27 +46,20 @@
 </head>
 
 <body >
-<div id="frame">
-	<!-- 
-目前，如果有<code data-language="C">"int a"</code>
-，就无法用jquery获取节点的id并设置click动作。
-<table>
-	<tr>
-		<td >
-			<li id="no1">
-				<a href="#line5">连接1</a>
-			</li>
-		</td>
-		<tr>
-			<code data-language="C">"int a"</code>
-		</tr>
-	</tr>
+<h1 class="mycon">
+	Code Share	
+</h1>
 
-</table>
--->
+{{if .Error}}
+<h1 class="mycon">{{.Error}}</h1>
+{{else}}
+<div id="frame">
+
 <pre>
-{{range $k,$v:=.Code}}<div  id="{{$k}}.line" href="#{{$k}}.line" class="my">{{$k}}</div>  <code  class="language-go">{{$v}}</code>{{end}}
+<p style="font-size: 16px">File Path: {{.File}}</p>{{range $k,$v:=.Code}}<div  id="{{$k}}.line" href="#{{$k}}.line" class="my">{{$k}}</div>  <code  class="language-cpp">{{$v}}</code>{{end}}
 </pre>
+{{end}}
+<h3 class="mycon">Contact me: {{.Email}}</h3>
 
 	<script type="text/javascript">
 		$(function () {

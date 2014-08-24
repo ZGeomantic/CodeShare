@@ -21,6 +21,7 @@ func (this *MainController) Get() {
 	this.Data["Email"] = "z.geomantic@gmail.com"
 	this.TplNames = "index.tpl"
 	path := this.Ctx.Input.Param(":splat")
+	this.Data["File"] = strings.TrimLeft(path, "E:/")
 
 	bytes_code, err := ioutil.ReadFile(path)
 	if err != nil {

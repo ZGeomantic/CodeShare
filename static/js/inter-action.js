@@ -7,7 +7,10 @@ $(document).ready(function () {
  		var data = event.data
  	 	// window.location.href=direct;
  		// alert(direct);
+
  	 	window.location.href="/#"+data
+ 	 	// window.location.href="http:///www.baidu.com"
+
 
  	  // location.reload(); 
 

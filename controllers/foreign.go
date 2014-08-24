@@ -18,6 +18,8 @@ func (this *ForeignController) Get() {
 	this.Data["Email"] = "z.geomantic@gmail.com"
 	this.TplNames = "index.tpl"
 	filePath, err := ioutil.ReadFile("cache")
+	this.Data["File"] = strings.TrimLeft(string(filePath), "E:/")
+
 	if err != nil {
 		this.Data["Error"] = err.Error()
 		return
