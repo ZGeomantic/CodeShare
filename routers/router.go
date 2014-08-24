@@ -7,5 +7,7 @@ import (
 
 func init() {
 	beego.Router("/*", &controllers.MainController{})
+	beego.Router("/ws", &controllers.WebSocketController{})
 	beego.Router("/", &controllers.ForeignController{})
+
 }
